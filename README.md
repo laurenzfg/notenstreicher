@@ -1,72 +1,70 @@
-# Notenstreicher
+# Getting Started with Create React App
 
-Notenstreicher is a utility to decide which grades to cancel from your final GPA in the context of the *Streichregel*
-of the Computer Science B.Sc. programme of RWTH Aachen university.
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-In this degree programme, you may cancel at most one course in every focus area from the final GPA.
-You may cancel courses to a maximum of 30 ECTS.
+## Available Scripts
 
-Just give this program your full transcript and it will tell you the optimal cancellation decision.
-Although the algorithm should be correct, *I do not accept responsibility if the program returns you a non-optimal recommendation*.
+In the project directory, you can run:
 
-## How to invoke the program?
+### `npm start`
 
-Download a Go compiler from the [Go Project](https://go.dev) and invoke the program with
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-    go run notenstreicher.go
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
 
-Insert your transcript except for the Bachelor Thesis (it can not be canceled) in the following format:
-* Every block starts with the name of focus area (e.g Practical CS)
-* All grades in a block are given in the format 'Name:ECTS:Grade' e.g. (Programming:8:1.3)
-* Blocks are terminated with a single blank line
-* Spaces are ignored; The input must not contain tabs or colons except where specified
-* Input is terminated with a double blank line
+### `npm test`
 
-An example input:
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-    Praktische Informatik
-    Programmierung:8:2.0
-    DSAL:8:2.0
-    Datenbanken:6:2.0
-    SWT:6:2.0
+### `npm run build`
 
-    Technische Informatik
-    TI:6:2.0
-    BUS:6:2.0
-    Datkom:6:2.0
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-    Theoretische Informatik
-    Fosap:6:2.0
-    BuK:7:2.0
-    Malo:7:4.0
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-    Mathematik
-    DS:6:2.0
-    AfI:8:2.0
-    LA:6:2.0
-    Stocha:6:2.0
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-    Sonstiges
-    Proseminar:3:2.0
-    Praktikum:6:2.0
-    Seminar:5:2.0
+### `npm run eject`
 
-    Wahlpflicht
-    DPN:6:2.0
-    AI:6:2.0
-    Compilerbau:6:2.0
+**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-    Anwendungsfach
-    NumA1:6:2.0
-    Mathe Praktikum:6:2.0
-    Cobra:10:2.0
+If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-## How can I modify the program?
-I hereby put the software project "notenstreicher" authored by laurenzfg in the last days of 2021 under the MIT License.
-See LICENSE file for details.
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-So feel free to fix and improve the program!
-Small changes in the degree programme structure should only require different input,
-while fundamental changes to the cancellation logic might require source code changes.
+You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-If you have a productive bugfix or feature improvement, create a PR or reach out to me via my [homepage](https://laurenzfg.com).
+## Learn More
+
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).
+
+### Code Splitting
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+
+### Analyzing the Bundle Size
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+
+### Making a Progressive Web App
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+
+### Advanced Configuration
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+
+### Deployment
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+
+### `npm run build` fails to minify
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
