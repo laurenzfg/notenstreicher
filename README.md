@@ -69,4 +69,4 @@ So feel free to fix and improve the program!
 Small changes in the degree programme structure should only require different input,
 while fundamental changes to the cancellation logic might require source code changes.
 
-If you have a productive bugfix or feature improvement, create a PR or reach out to me via my [homepage](https://laurenzfg.com)
+If you have a productive bugfix or feature improvement, create a PR or reach out to me via my [homepage](https://laurenzfg.com).
