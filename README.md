@@ -11,7 +11,7 @@ Although the algorithm should be correct, *I do not accept responsibility if the
 
 ## How to invoke the program?
 
-Download a Go runtime from the [Go Project](https://go.dev) and invoke my program with
+Download a Go runtime from the [Go Project](https://go.dev) and invoke the program with
 
     go run notenstreicher.go
 
