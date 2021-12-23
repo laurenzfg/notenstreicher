@@ -5,9 +5,9 @@ import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
-const Grade = ({grade, gradeAreaKey, gradeKey}) => {
+const Grade = ({ grade, gradeAreaKey, gradeKey }) => {
   return (
-    <Col className="ml-2 mr-2 mb-2" key="AfI">
+    <Col className="ml-2 mr-2 mb-2">
       <Form>
         <Row>
           <Col className="mb-2 col-md-7 col-12">

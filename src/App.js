@@ -29,8 +29,11 @@ const App = () => {
             Reset Form
           </Button>
         </h1>
-        {transcript.meggs.map((gradeArea, i)  => (
-          <MEGGDisplay gradeArea={gradeArea} gradeAreaKey={i} />
+        {transcript.meggs.map((gradeArea, i) => (
+          <>
+            <MEGGDisplay gradeArea={gradeArea} gradeAreaKey={i} />
+            <hr />
+          </>
         ))}
       </Container>
     </Container>
