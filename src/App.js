@@ -12,9 +12,7 @@ const initialTranscript = JSON.parse(
 );
 
 const App = () => {
-  let [transcript, updateTranscript] = useState(initialTranscript)
-
-  console.log(transcript)
+  let [transcript, updateTranscript] = useState(initialTranscript);
 
   return (
     <Container className="p-3">
@@ -31,10 +29,9 @@ const App = () => {
             Reset Form
           </Button>
         </h1>
-        {transcript.meggs.map((gradeArea, i) => (
+        {transcript.meggs.map((gradeArea, i)  => (
           <MEGGDisplay gradeArea={gradeArea} gradeAreaKey={i} />
         ))}
-
       </Container>
     </Container>
   );
