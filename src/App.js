@@ -12,7 +12,44 @@ const initialTranscript = JSON.parse(
 );
 
 const App = () => {
-  let [transcript, updateTranscript] = useState(initialTranscript);
+  const [transcript, updateTranscript] = useState(initialTranscript);
+
+  const addCategory = () => {
+    const emptyCategory = {
+      name: "",
+      grades: [],
+    };
+
+    let transcriptWithAddedCategory = {
+      meggs: [emptyCategory, ...transcript.meggs],
+    };
+
+    updateTranscript(transcriptWithAddedCategory);
+
+    console.log(transcript);
+  };
+
+  const resetForm = () => {
+    updateTranscript(initialTranscript);
+  };
+
+  const updateGradeArea = (i) => {
+    return (updatedCategory) => {
+      let transcriptWithUpdatedCategory = { meggs: [...transcript.meggs] };
+      transcriptWithUpdatedCategory.meggs[i] = updatedCategory;
+      updateTranscript(transcriptWithUpdatedCategory);
+    };
+  };
+
+  const removeGradeArea = (i) => {
+    return () => {
+      let transcriptWithUpdatedCategory = { meggs: [...transcript.meggs] };
+      let firstItems = transcriptWithUpdatedCategory.meggs.slice(0, i)
+      let lastItems = transcriptWithUpdatedCategory.meggs.slice(i+1, transcriptWithUpdatedCategory.meggs.length)
+      transcriptWithUpdatedCategory.meggs = firstItems.concat(lastItems);
+      updateTranscript(transcriptWithUpdatedCategory);
+    };
+  };
 
   return (
     <Container className="p-3">
@@ -22,18 +59,21 @@ const App = () => {
           <Button variant="primary" className="ms-3">
             Calculate
           </Button>
-          <Button variant="success" className="ms-3">
+          <Button variant="success" className="ms-3" onClick={addCategory}>
             Add Grade Area
           </Button>
-          <Button variant="secondary" className="ms-3">
+          <Button variant="secondary" className="ms-3" onClick={resetForm}>
             Reset Form
           </Button>
         </h1>
+        <hr />
         {transcript.meggs.map((gradeArea, i) => (
-          <>
-            <MEGGDisplay gradeArea={gradeArea} gradeAreaKey={i} />
-            <hr />
-          </>
+            <MEGGDisplay
+              key={i}
+              gradeArea={gradeArea}
+              updateGradeArea={updateGradeArea(i)}
+              removeGradeArea={removeGradeArea(i)}
+            />
         ))}
       </Container>
     </Container>

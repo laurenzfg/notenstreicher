@@ -7,7 +7,50 @@ import Button from "react-bootstrap/Button";
 
 import Grade from "./Grade";
 
-const MEGGDisplay = ({ gradeArea, gradeAreaKey }) => {
+const MEGGDisplay = ({
+  gradeArea,
+  updateGradeArea,
+  removeGradeArea,
+}) => {
+  const addGrade = () => {
+    const emptyGrade = {
+      name: "",
+      ects: 0,
+      grade: 0.0,
+    };
+    let updatedGradeArea = { ...gradeArea };
+    updatedGradeArea.grades = [emptyGrade, ...gradeArea.grades];
+
+    updateGradeArea(updatedGradeArea);
+  };
+
+  const updateGrade = (i) => {
+    return (updatedGrade) => {
+      let updatedGradeArea = { ...gradeArea };
+      updatedGradeArea.grades[i] = updatedGrade;
+      updateGradeArea(updatedGradeArea);
+    };
+  };
+
+  const removeGrade = (i) => {
+    return (updatedGrade) => {
+      let updatedGradeArea = { ...gradeArea };
+      let firstItems = updatedGradeArea.grades.slice(0, i);
+      let lastItems = updatedGradeArea.grades.slice(
+        i + 1,
+        updatedGradeArea.grades.length
+      );
+      updatedGradeArea.grades = firstItems.concat(lastItems);
+      updateGradeArea(updatedGradeArea);
+    };
+  };
+
+  const handleAreaNameUpdate = (event) => {
+    let updatedGradeArea = { ...gradeArea };
+    updatedGradeArea.name = event.target.value;
+    updateGradeArea(updatedGradeArea);
+  };
+
   return (
     <>
       <Col className="mt-4 mb-4 col-7">
@@ -17,13 +60,14 @@ const MEGGDisplay = ({ gradeArea, gradeAreaKey }) => {
               <Form.Control
                 value={gradeArea.name}
                 placeholder="Module Area Name"
+                onChange={handleAreaNameUpdate}
               />
             </Col>
             <Col className="col-6">
-              <Button variant="success" className="me-2">
+              <Button variant="success" className="me-2" onClick={addGrade}>
                 Add Grade
               </Button>{" "}
-              <Button variant="danger" className="">
+              <Button variant="danger" className="" onClick={removeGradeArea}>
                 Remove Grade Area
               </Button>
             </Col>
@@ -40,9 +84,15 @@ const MEGGDisplay = ({ gradeArea, gradeAreaKey }) => {
           </Row>
         </Col>
         {gradeArea.grades.map((grade, i) => (
-          <Grade grade={grade} gradeAreaKey={gradeAreaKey} gradeKey={i} />
+          <Grade
+            grade={grade}
+            key={i}
+            updateGrade={updateGrade(i)}
+            removeGrade={removeGrade(i)}
+          />
         ))}
       </Row>
+      <hr />
     </>
   );
 };
