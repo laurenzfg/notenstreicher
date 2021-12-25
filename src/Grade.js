@@ -15,14 +15,13 @@ const Grade = ({ grade, updateGrade, removeGrade }) => {
 
   const handleGradeEctsUpdate = (event) => {
     let updatedGrade = { ...grade };
-    updatedGrade.ects = parseInt(event.target.value);
+    updatedGrade.ects = event.target.value;
     updateGrade(updatedGrade); 
   };
 
   const handleGradeGradeUpdate = (event) => {
     let updatedGrade = { ...grade };
-    updatedGrade.grade = parseFloat(event.target.value);
-    console.log(updatedGrade)
+    updatedGrade.grade = event.target.value;
     updateGrade(updatedGrade);  
   };
 
@@ -34,10 +33,10 @@ const Grade = ({ grade, updateGrade, removeGrade }) => {
             <Form.Control value={grade.name} onChange={handleGradeNameUpdate} placeholder="Module Name" />
           </Col>
           <Col className="mb-2 col-md-2 col-12">
-            <Form.Control value={grade.ects} onChange={handleGradeEctsUpdate} placeholder="Module ECTS" />
+            <Form.Control value={grade.ects} onChange={handleGradeEctsUpdate} placeholder="Module ECTS" isInvalid={isNaN(grade.ects) || String(grade.ects).includes(".")} />
           </Col>
           <Col className="mb-2 col-md-2 col-12">
-            <Form.Control value={grade.grade} onChange={handleGradeGradeUpdate} placeholder="Your Grade" />
+            <Form.Control value={grade.grade} onChange={handleGradeGradeUpdate} placeholder="Your Grade" isInvalid={isNaN(grade.grade)}/>
           </Col>
           <Col className="mb-2 col-md-1 col-12">
             <Button variant="danger" onClick={removeGrade}>Remove</Button>

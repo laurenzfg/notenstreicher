@@ -27,6 +27,7 @@ const MEGGDisplay = ({
   const updateGrade = (i) => {
     return (updatedGrade) => {
       let updatedGradeArea = { ...gradeArea };
+      updatedGradeArea.grades = [...updatedGradeArea.grades]
       updatedGradeArea.grades[i] = updatedGrade;
       updateGradeArea(updatedGradeArea);
     };
