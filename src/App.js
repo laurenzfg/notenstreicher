@@ -126,7 +126,7 @@ const App = () => {
           <pre>{cancellationRecommendation}</pre>
           <p>
             You just invoked a CLI tool written in Golang with your browser. It
-            was run as a WebAssembly on your machine! Pretty cool, eh.
+            was run as a <a href="https://webassembly.org/">WebAssembly</a> on your machine! Pretty cool, eh.
           </p>
         </Modal.Body>
         <Modal.Footer>
