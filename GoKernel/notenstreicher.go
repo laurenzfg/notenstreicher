@@ -132,7 +132,7 @@ func solveAndOutput(transcript *Transcript) string {
 		}
 	}
 	output += fmt.Sprintf("\nThis cancellation yields an average of: %f\n", optimalAvg)
-	output += fmt.Sprintf("\nlaurenzfg congratelates you to your successful CS degree.\nlaurenzfg does not take any responsibility for the grade cancellation recommodation.\nSolve the problem yourself, you literally have a CS degree now!\nArrivederci!\n")
+	output += fmt.Sprintf("\nlaurenzfg congratelates you to your successful CS degree.\nlaurenzfg does not take any responsibility for the grade cancellation recommendation.\nSolve the problem yourself, you literally have a CS degree now!\nArrivederci!\n")
 
 	return output
 }
