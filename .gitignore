@@ -21,3 +21,7 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# golang files (always generated on build)
+public/main.wasm
+public/wasm_exec.js

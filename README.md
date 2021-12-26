@@ -1,3 +1,7 @@
+Regarding the Golang WebAssembly integration, a huge shoutout to:
+- https://golangbot.com/webassembly-using-go/
+- https://dave.cheney.net/2013/10/12/how-to-use-conditional-compilation-with-the-go-build-tool
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

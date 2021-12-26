@@ -62,7 +62,17 @@ const App = () => {
   };
 
   const onCalculate = () => {
-    setCancellationRecommendation(JSON.stringify(transcript));
+    const transcriptAsJSON = JSON.stringify(transcript);
+
+    let cancellationRecommendation = "pending result";
+    try {
+      // Call Golang
+      cancellationRecommendation = window.notenstreicher(transcriptAsJSON);
+    } catch (e) {
+      cancellationRecommendation = e;
+    }
+
+    setCancellationRecommendation(cancellationRecommendation);
     setShow(true);
   };
 
@@ -97,7 +107,17 @@ const App = () => {
         <Modal.Header closeButton>
           <Modal.Title>Grade Cancellation Recommendation</Modal.Title>
         </Modal.Header>
-        <Modal.Body>{cancellationRecommendation}</Modal.Body>
+        <Modal.Body>
+          <p>
+            Result of{" "}
+            <a href="https://github.com/laurenzfg/notenstreicher/tree/main/GoKernel">
+              my Golang tool
+            </a>{" "}
+            to compute the optimal grade cancellation:
+          </p>
+          <pre>{cancellationRecommendation}</pre>
+          <p>You just invoked a CLI tool written in Golang on your browser. It was run as a WebAssembly on your machine! Pretty cool, eh.</p>
+        </Modal.Body>
         <Modal.Footer>
           <Button variant="primary" onClick={handleClose}>
             Close
