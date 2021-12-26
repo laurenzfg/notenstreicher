@@ -151,7 +151,7 @@ func main() {
 		reader := bufio.NewReader(os.Stdin)
 		text, _ := reader.ReadBytes('\n')
 		err := json.Unmarshal(text, transcript)
-		fmt.Printf("Err: %v\n", err)
+		fmt.Printf("Err on JSON umarshal: %v\n", err)
 	} else {
 		fmt.Println("Notenstreicher reads in a transcript as follows: MutuallyExclusiveGradesGroup name followed by Tricolons Name:ECTS:Grade\nA MutuallyExclusiveGradesGroup is closed with a blank line TODO output this helpstring\nA double blank line finishes input and calculates the grade average")
 		subsequentBlankLines := 1
