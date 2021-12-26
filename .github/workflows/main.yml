@@ -9,20 +9,21 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Setup Node and Golang
+    - name: Setup Node 16
       uses: actions/setup-node@v2
       with:
         node-version: '16'
     - run: sudo apt -y install golang-go
     - run: npm ci
-    - run: npm run build
 
     - name: Compile WebAssembly
       run: |
-        cp "$(go env GOROOT)/misc/wasm/wasm_exec.js" public/
+        cp "$(go env GOROOT)/misc/wasm/wasm_exec.js" ./public/
         cd GoKernel
         GOOS=js GOARCH=wasm go build -o ../public/main.wasm
         cd -
+
+    - run: npm run build
 
     - name: Init new repo in dist folder and commit generated files
       run: |

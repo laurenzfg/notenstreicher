@@ -8,11 +8,12 @@
 set -e
 # install dependencies
 npm install
-# build static files
-npm run build
 
 # Compile Go + copy appropriate WASM loader over
 cp "$(go env GOROOT)/misc/wasm/wasm_exec.js" public/
 cd GoKernel
 GOOS=js GOARCH=wasm go build -o ../public/main.wasm
 cd -
+
+# build static files
+npm run build
