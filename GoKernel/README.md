@@ -9,11 +9,16 @@ You may cancel courses to a maximum of 30 ECTS.
 Just give this program your full transcript and it will tell you the optimal cancellation decision.
 Although the algorithm should be correct, *I do not accept responsibility if the program returns you a non-optimal recommendation*.
 
-## How to invoke the program?
+## How to invoke the program on my machine?
 
-Download a Go compiler from the [Go Project](https://go.dev) and invoke the program with
+You can run the app as an command line ap by compiling it for
+Linux, Windows or Mac OS X.
+To do so, download a Go compiler from the [Go Project](https://go.dev) and invoke the program with
 
     go run notenstreicher.go
+
+The app was developed and tested with Go 1.16.11 and Linux 5.15.
+The `main()` function for CLI purposes is defined in `notensreicher_wasm.go`.
 
 Insert your transcript except for the Bachelor Thesis (it can not be canceled) in the following format:
 * Every block starts with the name of focus area (e.g Practical CS)
@@ -60,6 +65,38 @@ An example input:
     NumA1:6:2.0
     Mathe Praktikum:6:2.0
     Cobra:10:2.0
+
+## How to invoke the program from JavaScript via WebAssembly?
+
+The algorithm is prepared to be run via WebAssembly (from Javascript).
+
+For compilation, run
+
+    GOOS=js GOARCH=wasm go build -o main.wasm
+
+use `$(go env GOROOT)/misc/wasm/wasm_exec.js` as the loader.
+
+The WASM binary exposes a function `notenstreicher` which takes
+a transcript as JSON and returns the same output as the CLI.
+The WASM binary is scaffolded and uses the main() defined in `notenstreicher_wasm.go`.
+
+An example for a use from JavaScript is the react app in the root of this repo.
+
+### Sounds cool, where is this WebAssembly stuff documented?
+
+These web pages were of great help:
+- https://github.com/golang/go/wiki/webassembly
+- https://golangbot.com/webassembly-using-go/
+- https://dave.cheney.net/2013/10/12/how-to-use-conditional-compilation-with-the-go-build-tool
+
+The produced binary is rather fat with a size of ~2MB.
+But I really didn't care (I am a young programmer),
+so I just rolled with it.
+
+[TinyGo](https://tinygo.org/docs/guides/webassembly/) looks promising, but does not have full reflection support.
+Hence, we cannot use Go's JSON unmarshaler.
+Nonetheless it would be possible to use a third party JSON parser
+which works without reflection and get a smaller binary this way.
 
 ## How can I modify the program?
 I hereby put the software project "notenstreicher" authored by laurenzfg in the last days of 2021 under the MIT License.
