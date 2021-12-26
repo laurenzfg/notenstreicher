@@ -18,12 +18,16 @@ Although the algorithm should be correct, *I do not accept responsibility if the
 ## How to work with the code?
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This repo as fully configured (JS and Go part) continous deployment.
+So any change is immediately reflected in *production*.
 
 ### Available Scripts
 
 In the project directory, you can run:
 
 #### `npm start`
+
+**In order to compile the WASM blob with the Go App, run `build.sh` at least once and after every change to the Go App. You need to have a Golang compiler on your machine to do that. Without the blob, the app will crash when you press 'Calculate'.** 
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
@@ -37,6 +41,8 @@ Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
 #### `npm run build`
+
+**In order to compile the WASM blob with the Go App, run `build.sh` at least once and after every change to the Go App. You need to have a Golang compiler on your machine to do that. Without the blob, the app will crash when you press 'Calculate'.**
 
 Builds the app for production to the `build` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
