@@ -7,11 +7,7 @@ import Button from "react-bootstrap/Button";
 
 import Grade from "./Grade";
 
-const MEGGDisplay = ({
-  gradeArea,
-  updateGradeArea,
-  removeGradeArea,
-}) => {
+const MEGGDisplay = ({ gradeArea, updateGradeArea, removeGradeArea }) => {
   const addGrade = () => {
     const emptyGrade = {
       name: "",
@@ -27,7 +23,7 @@ const MEGGDisplay = ({
   const updateGrade = (i) => {
     return (updatedGrade) => {
       let updatedGradeArea = { ...gradeArea };
-      updatedGradeArea.grades = [...updatedGradeArea.grades]
+      updatedGradeArea.grades = [...updatedGradeArea.grades];
       updatedGradeArea.grades[i] = updatedGrade;
       updateGradeArea(updatedGradeArea);
     };

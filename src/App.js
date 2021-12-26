@@ -17,7 +17,8 @@ const App = () => {
 
   // for the result modal
   const [show, setShow] = useState(false);
-  const [cancellationRecommendation, setCancellationRecommendation] = useState("");
+  const [cancellationRecommendation, setCancellationRecommendation] =
+    useState("");
   const handleClose = () => setShow(false);
 
   const addCategory = () => {
@@ -61,7 +62,7 @@ const App = () => {
   };
 
   const onCalculate = () => {
-    setCancellationRecommendation(JSON.stringify(transcript))
+    setCancellationRecommendation(JSON.stringify(transcript));
     setShow(true);
   };
 
