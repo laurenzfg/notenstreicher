@@ -1,4 +1,4 @@
-# Notenstreicher
+# [Notenstreicher](https://notenstreicher.laurenzfg.com)
 
 This is a Web GUI for the same-named Go CLI app saved in the folder [GoKernel](GoKernel/README.md). It is hosted online at [notenstreicher.laurenzfg.com](https://notenstreicher.laurenzfg.com).
 
