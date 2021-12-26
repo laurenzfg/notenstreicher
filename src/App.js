@@ -51,12 +51,17 @@ const App = () => {
     };
   };
 
+  const onCalculate = () => {
+      const transcriptAsJSON = JSON.stringify(transcript)
+      console.log(transcriptAsJSON)
+  };
+
   return (
     <Container className="p-3">
       <Container className="p-5 mb-4 bg-light rounded-3">
         <h1 className="header mb-4">
           Notenstreicher
-          <Button variant="primary" className="ms-3">
+          <Button variant="primary" className="ms-3" onClick={onCalculate}>
             Calculate
           </Button>
           <Button variant="success" className="ms-3" onClick={addCategory}>
