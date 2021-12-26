@@ -105,7 +105,8 @@ const App = () => {
             (c) 2021 <a href="https://laurenzfg.com">laurenzfg</a>. Source code
             is published at{" "}
             <a href="https://github.com/laurenzfg/notenstreicher">GitHub</a>.<br />
-            Data Protection Statement: The data processing happens on your machine. So your usage is not stored or logged with any party, including me.
+            Data Protection Statement: The data processing happens on your machine.
+            So the data created while using the app (e.g. your grades) is not sent to any party, including me.
             Your access to the service might be logged and might be processed in adherence to EU and US law by my hosting provider GitHub Pages, though.
             "Please note that GitHub may collect User Personal Information from visitors to your GitHub Pages website, including logs of visitor IP addresses, to comply with legal obligations, and to maintain the security and integrity of the Website and the Service."
           </p>
