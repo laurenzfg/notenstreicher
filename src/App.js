@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
 
 import MEGGDisplay from "./MEGG";
 
@@ -13,6 +14,11 @@ const initialTranscript = JSON.parse(
 
 const App = () => {
   const [transcript, updateTranscript] = useState(initialTranscript);
+
+  // for the result modal
+  const [show, setShow] = useState(false);
+  const [cancellationRecommendation, setCancellationRecommendation] = useState("");
+  const handleClose = () => setShow(false);
 
   const addCategory = () => {
     const emptyCategory = {
@@ -44,44 +50,60 @@ const App = () => {
   const removeGradeArea = (i) => {
     return () => {
       let transcriptWithUpdatedCategory = { meggs: [...transcript.meggs] };
-      let firstItems = transcriptWithUpdatedCategory.meggs.slice(0, i)
-      let lastItems = transcriptWithUpdatedCategory.meggs.slice(i+1, transcriptWithUpdatedCategory.meggs.length)
+      let firstItems = transcriptWithUpdatedCategory.meggs.slice(0, i);
+      let lastItems = transcriptWithUpdatedCategory.meggs.slice(
+        i + 1,
+        transcriptWithUpdatedCategory.meggs.length
+      );
       transcriptWithUpdatedCategory.meggs = firstItems.concat(lastItems);
       updateTranscript(transcriptWithUpdatedCategory);
     };
   };
 
   const onCalculate = () => {
-      const transcriptAsJSON = JSON.stringify(transcript)
-      console.log(transcriptAsJSON)
+    setCancellationRecommendation(JSON.stringify(transcript))
+    setShow(true);
   };
 
   return (
-    <Container className="p-3">
-      <Container className="p-5 mb-4 bg-light rounded-3">
-        <h1 className="header mb-4">
-          Notenstreicher
-          <Button variant="primary" className="ms-3" onClick={onCalculate}>
-            Calculate
-          </Button>
-          <Button variant="success" className="ms-3" onClick={addCategory}>
-            Add Grade Area
-          </Button>
-          <Button variant="secondary" className="ms-3" onClick={resetForm}>
-            Reset Form
-          </Button>
-        </h1>
-        <hr />
-        {transcript.meggs.map((gradeArea, i) => (
+    <>
+      <Container className="p-3">
+        <Container className="p-5 mb-4 bg-light rounded-3">
+          <h1 className="header mb-4">
+            Notenstreicher
+            <Button variant="primary" className="ms-3" onClick={onCalculate}>
+              Calculate
+            </Button>
+            <Button variant="success" className="ms-3" onClick={addCategory}>
+              Add Grade Area
+            </Button>
+            <Button variant="secondary" className="ms-3" onClick={resetForm}>
+              Reset Form
+            </Button>
+          </h1>
+          <hr />
+          {transcript.meggs.map((gradeArea, i) => (
             <MEGGDisplay
               key={i}
               gradeArea={gradeArea}
               updateGradeArea={updateGradeArea(i)}
               removeGradeArea={removeGradeArea(i)}
             />
-        ))}
+          ))}
+        </Container>
       </Container>
-    </Container>
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Grade Cancellation Recommendation</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>{cancellationRecommendation}</Modal.Body>
+        <Modal.Footer>
+          <Button variant="primary" onClick={handleClose}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    </>
   );
 };
 
