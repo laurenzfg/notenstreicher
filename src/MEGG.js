@@ -54,7 +54,7 @@ const MEGGDisplay = ({
 
   return (
     <>
-      <Col className="mt-4 mb-4 col-7">
+      <Col className="mt-4 mb-4 col-xl-7 col-12">
         <Form>
           <Row>
             <Col className="col-6">
