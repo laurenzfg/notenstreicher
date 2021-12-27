@@ -4,6 +4,7 @@
 
 # Don't check in the binary
 notenstreicher
+kernel
 
 ### Go ###
 # Binaries for programs and plugins
