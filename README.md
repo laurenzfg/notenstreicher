@@ -7,7 +7,7 @@ It invokes the Go App by means of [WebAssembly](https://webassembly.org/).
 The app has the following purpose:
 
 > Notenstreicher is a utility to decide which grades to cancel from your final GPA in the context of the *Streichregel*
-of the Computer Science B.Sc. programme of RWTH Aachen university.
+of the Computer Science B.Sc. programme of RWTH Aachen University.
 >
 > In this degree programme, you may cancel at most one course in every focus area from the final GPA.
 You may cancel courses to a maximum of 30 ECTS.
