@@ -145,7 +145,7 @@ func solveAndOutput(transcript *Transcript) string {
 	if (naiveAvg == 6.0 || optimalAvg == 6.0) {
 		output += fmt.Sprintf("\nYour transcript is of invalid shape.\nA transcript contains a non-zero count of grade areas whose grades are within 1.0 and 4.0 and\nwhose grades' ECTS add up to at most 152 (DO NOT enter Final Thesis, Non-Technical Module, PSP, Mentoring as these cannot be cancelled / are ungraded).\n")
 	} else {
-		output += fmt.Sprintf("\nlaurenzfg congratelates you to your successful CS degree.\nlaurenzfg does not take any responsibility for the grade cancellation recommendation.\nSolve the problem yourself, you literally have a CS degree now!\nArrivederci!\n")
+		output += fmt.Sprintf("\nlaurenzfg congratulates you to your successful CS degree.\nlaurenzfg does not take any responsibility for the grade cancellation recommendation.\nSolve the problem yourself, you literally have a CS degree now!\nArrivederci!\n")
 	}
 
 
