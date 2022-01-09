@@ -15,7 +15,7 @@ You can run the app as an command line ap by compiling it for
 Linux, Windows or Mac OS X.
 To do so, download a Go compiler from the [Go Project](https://go.dev) and invoke the program with
 
-    go run notenstreicher.go
+    go build && ./kernel
 
 The app was developed and tested with Go 1.16.11 and Linux 5.15.
 The `main()` function for CLI purposes is defined in `notensreicher_wasm.go`.
@@ -58,6 +58,7 @@ An example input:
 
     Wahlpflicht
     DPN:6:2.0
+    CSE:6:2.0
     AI:6:2.0
     Compilerbau:6:2.0
 
