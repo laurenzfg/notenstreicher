@@ -48,14 +48,16 @@ func (tr *Transcript) avgWithIgnoreList(ignoreList []int) float64 {
 
 	sum := 0.0
 	ectsSum := 0.0
+	cancelledECTSSum := 0.0
 
 	for i, megg := range tr.MEGGs {
 		for j, grade := range megg.Grades {
+			ectsAsFloat := float64(grade.ECTS) // to avoid unwanted int converts
 			if ignoreList[i] == j {
 				// Skip cancelled grades in avg calculation
+				cancelledECTSSum += ectsAsFloat
 				continue
 			}
-			ectsAsFloat := float64(grade.ECTS) // to avoid unwanted int converts
 			sum += grade.Grade * ectsAsFloat
 			ectsSum += ectsAsFloat
 		}
@@ -65,6 +67,12 @@ func (tr *Transcript) avgWithIgnoreList(ignoreList []int) float64 {
 		// Blank transcript ==> return 6.0 as fallback value
 		return 6.0
 	}
+
+	if ectsSum + cancelledECTSSum > 152.00 {
+		// more than 152 ECTS transcript ==> return 6.0 as fallback value
+		return 6.0
+	}
+
 	return sum / ectsSum
 }
 
@@ -117,8 +125,9 @@ func (tr *Transcript) findOptimalIgnoreListRecursion(ignoreListSoFar []int, ects
 }
 
 func solveAndOutput(transcript *Transcript) string {
+	naiveAvg := transcript.avg()
 	output := ""
-	output += fmt.Sprintf("your naïve average grade would be: %f\n", transcript.avg())
+	output += fmt.Sprintf("your naïve average grade would be: %f\n", naiveAvg)
 	output += fmt.Sprintln("Solving the optimisation problem")
 	optimalIgnoreList, optimalAvg := transcript.findOptimalIgnoreList()
 	output += fmt.Sprintln("It is optimal to cancel the following grades:")
@@ -132,7 +141,13 @@ func solveAndOutput(transcript *Transcript) string {
 		}
 	}
 	output += fmt.Sprintf("\nThis cancellation yields an average of: %f\n", optimalAvg)
-	output += fmt.Sprintf("\nlaurenzfg congratelates you to your successful CS degree.\nlaurenzfg does not take any responsibility for the grade cancellation recommendation.\nSolve the problem yourself, you literally have a CS degree now!\nArrivederci!\n")
+
+	if (naiveAvg == 6.0 || optimalAvg == 6.0) {
+		output += fmt.Sprintf("\nYour transcript is of invalid shape.\nA transcript contains a non-zero count of grade areas whose grades are within 1.0 and 4.0 and\nwhose grades' ECTS add up to at most 152 (DO NOT enter Final Thesis, Non-Technical Module, PSP, Mentoring as these cannot be cancelled / are ungraded).\n")
+	} else {
+		output += fmt.Sprintf("\nlaurenzfg congratelates you to your successful CS degree.\nlaurenzfg does not take any responsibility for the grade cancellation recommendation.\nSolve the problem yourself, you literally have a CS degree now!\nArrivederci!\n")
+	}
+
 
 	return output
 }
