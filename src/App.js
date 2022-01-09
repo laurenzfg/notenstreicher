@@ -92,6 +92,9 @@ const App = () => {
               Reset Form
             </Button>
           </h1>
+          <p>
+          DO NOT enter Final Thesis, Non-Technical Module, PSP, Mentoring as these cannot be cancelled / are ungraded!
+          </p>
           <hr />
           {transcript.meggs.map((gradeArea, i) => (
             <MEGGDisplay
@@ -128,6 +131,17 @@ const App = () => {
           <p>
             You just invoked a CLI tool written in Golang with your browser. It
             was run as a <a href="https://webassembly.org/">WebAssembly</a> on your machine! Pretty cool, eh.
+          </p>
+          <p>
+            Algorithm executed: Compute a tree of all possible grade cancellations. At depth <i>i</i>, we evaluate all possible
+            cancellations in area <i>i</i>.
+            The leaf nodes of the tree then correspond to all possible cancellations.
+            Recursively choose a cancellation with the minimal average grade.
+            A cancellation is valid iff:
+            <ul>
+              <li>at most 30 ECTS are cancelled</li>
+              <li>in one area, at most one grade is cancelled</li>
+            </ul>
           </p>
         </Modal.Body>
         <Modal.Footer>
