@@ -6,6 +6,8 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
 import Grade from "./Grade";
+import { faPlus, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const MEGGDisplay = ({ gradeArea, updateGradeArea, removeGradeArea }) => {
   const addGrade = () => {
@@ -50,46 +52,47 @@ const MEGGDisplay = ({ gradeArea, updateGradeArea, removeGradeArea }) => {
 
   return (
     <>
-      <Col className="mt-4 mb-4 col-xl-7 col-12">
-        <Form>
-          <Row>
-            <Col className="col-6">
-              <Form.Control
-                value={gradeArea.name}
-                placeholder="Module Area Name"
-                onChange={handleAreaNameUpdate}
-              />
-            </Col>
-            <Col className="col-6">
-              <Button variant="success" className="me-2" onClick={addGrade}>
-                Add Grade
-              </Button>{" "}
-              <Button variant="danger" className="" onClick={removeGradeArea}>
-                Remove Grade Area
-              </Button>
-            </Col>
-          </Row>
-        </Form>
-      </Col>
-
-      <Row className="col-10" sm={1}>
-        <Col className="ml-2 mr-2 mb-2" key="AfI">
-          <Row>
-            <Col className="mb-2 col-md-7 col-12">Module Name</Col>
-            <Col className="mb-2 col-md-2 col-12">Module ECTS</Col>
-            <Col className="mb-2 col-md-2 col-12">Your Grade</Col>
-          </Row>
+      <div className="grade-area-container">
+        <div className="grade-area-tr">
+          <Button variant="white" className="flex-shrink-0 flex-grow-1 flex-sm-grow-0" onClick={removeGradeArea}>
+            <FontAwesomeIcon className="is-danger" size="lg" icon={faTrash} />
+          </Button>
+        </div>
+        <Col className="mb-4 col-11 col-md-6 col-lg-5">
+          <Form>
+            <Form.Control
+              value={gradeArea.name}
+              placeholder="Module Area Name"
+              onChange={handleAreaNameUpdate}
+            />
+          </Form>
         </Col>
-        {gradeArea.grades.map((grade, i) => (
-          <Grade
-            grade={grade}
-            key={i}
-            updateGrade={updateGrade(i)}
-            removeGrade={removeGrade(i)}
-          />
-        ))}
-      </Row>
-      <hr />
+
+        <Row sm={1}>
+          <Col className="ml-2 mr-2" key="AfI">
+            <Row>
+              <Col className="mb-2 col-md-7 col-12">Module Name</Col>
+              <Col className="mb-2 col-md-2 col-12">Module ECTS</Col>
+              <Col className="mb-2 col-md-2 col-12">Your Grade</Col>
+            </Row>
+          </Col>
+          <Col className="ml-2 mr-2 mb-1" >
+            <Button variant="white" className="ps-0 flex-shrink-0 flex-grow-1 flex-sm-grow-0 is-success d-flex align-items-center gap-2" onClick={addGrade}>
+              <FontAwesomeIcon icon={faPlus} />
+              <span>Add Module</span>
+            </Button>
+          </Col>
+
+          {gradeArea.grades.map((grade, i) => (
+            <Grade
+              grade={grade}
+              key={i}
+              updateGrade={updateGrade(i)}
+              removeGrade={removeGrade(i)}
+            />
+          ))}
+        </Row>
+      </div>
     </>
   );
 };
