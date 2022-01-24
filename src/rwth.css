@@ -13,21 +13,6 @@ a {
     color: var(--rwth-link);
 }
 
-.app-footer {
-    margin: 3em 0 0 0;
-    padding-top: 1em;
-}
-
-.app-header {
-    margin: 3em 0 2em 0;
-}
-
-.grade-area-container {
-    margin: 0;
-    padding: 1em;
-    box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%), 0 0px 0 1px rgb(10 10 10 / 2%);
-}
-
 .form-control {
     border-radius: unset;
 }
@@ -59,8 +44,4 @@ a {
 .btn-secondary,
 .btn-secondary:hover {
     background-color: var(--rwth-grey);
-}
-
-.has-column-gap-3 {
-    column-gap: 3em;
 }
