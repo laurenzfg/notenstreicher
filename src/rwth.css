@@ -1,0 +1,66 @@
+:root {
+    --rwth-primary: #00549f;
+    --rwth-danger: #f14668;
+    --rwth-success: #48c78e;
+    --rwth-link: var(--rwth-primary);
+    --rwth-grey: hsl(0, 0%, 48%);
+    --bs-font-sans-serif: "Helvetica", "Arial", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+        "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+        "Noto Color Emoji";
+}
+
+a {
+    color: var(--rwth-link);
+}
+
+.app-footer {
+    margin: 3em 0 0 0;
+    padding-top: 1em;
+}
+
+.app-header {
+    margin: 3em 0 2em 0;
+}
+
+.grade-area-container {
+    margin: 0;
+    padding: 1em;
+    box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%), 0 0px 0 1px rgb(10 10 10 / 2%);
+}
+
+.form-control {
+    border-radius: unset;
+}
+
+.btn {
+    border-radius: unset;
+    border: none;
+}
+
+.btn:hover {
+    filter: brightness(95%);
+}
+
+.btn-primary,
+.btn-primary:hover {
+    background-color: var(--rwth-primary);
+}
+
+.btn-danger,
+.btn-danger:hover {
+    background-color: var(--rwth-danger);
+}
+
+.btn-success,
+.btn-success:hover {
+    background-color: var(--rwth-success);
+}
+
+.btn-secondary,
+.btn-secondary:hover {
+    background-color: var(--rwth-grey);
+}
+
+.has-column-gap-3 {
+    column-gap: 3em;
+}
