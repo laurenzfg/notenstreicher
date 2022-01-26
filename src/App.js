@@ -78,24 +78,29 @@ const App = () => {
 
   return (
     <>
-      <Container className="p-3">
-        <Container className="p-5 mb-4 bg-light rounded-3">
-          <h1 className="header mb-4">
+      <Container className="col-12 col-lg-9 col-xl-7">
+        <div className="app-header d-flex flex-wrap flex-column flex-sm-row align-items-stretch align-items-sm-center has-column-gap-3">
+          <h1 className="fw-bold">
             Notenstreicher
-            <Button variant="primary" className="ms-3" onClick={onCalculate}>
+          </h1>
+          <div className="d-flex gap-2 flex-column flex-sm-row align-items-stretch">
+            <Button variant="primary" onClick={onCalculate}>
               Calculate
             </Button>
-            <Button variant="success" className="ms-3" onClick={addCategory}>
+            <Button variant="success" onClick={addCategory}>
               Add Grade Area
             </Button>
-            <Button variant="secondary" className="ms-3" onClick={resetForm}>
+            <Button variant="secondary" onClick={resetForm}>
               Reset Form
             </Button>
-          </h1>
-          <p>
+          </div>
+        </div>
+
+        <p>
           DO NOT enter Final Thesis, Non-Technical Module, PSP, Mentoring as these cannot be cancelled / are ungraded!
-          </p>
-          <hr />
+        </p>
+
+        <div className="d-flex flex-column gap-5" >
           {transcript.meggs.map((gradeArea, i) => (
             <MEGGDisplay
               key={i}
@@ -104,6 +109,9 @@ const App = () => {
               removeGradeArea={removeGradeArea(i)}
             />
           ))}
+        </div>
+
+        <div className="app-footer">
           <p>
             (c) 2021 <a href="https://laurenzfg.com">laurenzfg</a>. Source code
             is published at{" "}
@@ -113,7 +121,7 @@ const App = () => {
             Your access to the service might be logged and might be processed in adherence to EU and US law by my hosting provider GitHub Pages, though.
             "Please note that GitHub may collect User Personal Information from visitors to your GitHub Pages website, including logs of visitor IP addresses, to comply with legal obligations, and to maintain the security and integrity of the Website and the Service."
           </p>
-        </Container>
+        </div>
       </Container>
       <Modal show={show} size="lg" onHide={handleClose}>
         <Modal.Header closeButton>

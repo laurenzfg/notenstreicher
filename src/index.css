@@ -1,3 +1,43 @@
-.header {
-  text-align: center;
+.app-footer {
+  margin: 3em 0 0 0;
+  padding-top: 1em;
+}
+
+.app-header {
+  margin: 3em 0 2em 0;
+}
+
+.grade-area-container {
+  margin: 0;
+  padding: 1em;
+  box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%), 0 0px 0 1px rgb(10 10 10 / 2%);
+  position: relative;
+}
+
+.grade-area-tr {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  right: -0.3em;
+  top: -0.3em;
+  background-color: white;
+  box-shadow: -0.3em 0.3em 1.3em -0.5em rgb(10 10 10 / 25%);
+  border-bottom-left-radius: 0.5em;
+  border-top-right-radius: 0.3em;
+  width: 2.3em;
+  height: 2.3em;
+  padding: 0.2em;
+}
+
+.has-column-gap-3 {
+  column-gap: 3em;
+}
+
+.is-danger {
+  color: var(--rwth-danger);
+}
+
+.is-success {
+  color: var(--rwth-success);
 }
