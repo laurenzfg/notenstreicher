@@ -98,6 +98,7 @@ const App = () => {
 
         <p>
           DO NOT enter Final Thesis, Non-Technical Module, PSP, Mentoring as these cannot be cancelled / are ungraded!
+          DO NOT enter ungraded courses and courses which were temporarily ungraded due to the SARS-COV-2 pandemic. They do not influence your final grade at all.
         </p>
 
         <div className="d-flex flex-column gap-5" >
