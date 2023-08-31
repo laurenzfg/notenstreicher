@@ -94,6 +94,20 @@ const App = () => {
               Reset Form
             </Button>
           </div>
+          <div className="d-flex ms-auto flex-column flex-sm-row align-items-stretch btn-group">
+            <Button variant="primary active" onClick={addCategory}>
+              BSc (2022)
+            </Button>
+            <Button variant="primary">
+              BSc (2018)
+            </Button>
+            <Button variant="primary">
+              MSc (2023)
+            </Button>
+            <Button variant="primary">
+              MSc (2010)
+            </Button>
+          </div>
         </div>
 
         <p>
