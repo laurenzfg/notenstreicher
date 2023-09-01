@@ -9,6 +9,7 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     permissions:
       id-token: write
+      pages: write
     runs-on: ubuntu-latest
 
     steps:
