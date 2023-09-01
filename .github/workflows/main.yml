@@ -4,9 +4,6 @@ on:
     branches: [ main ]
 jobs:
   build:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
 
     steps:
@@ -16,7 +13,8 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: '18'
-    - run: sudo apt -y install golang-go
+    - name: Setup Go
+      uses: actions/setup-go@v4
     - run: npm ci
 
     - name: Compile WebAssembly
@@ -27,8 +25,6 @@ jobs:
         cd -
 
     - run: npm run build
-    - name: Setup Pages
-      uses: actions/configure-pages@v3
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v2
       with:
