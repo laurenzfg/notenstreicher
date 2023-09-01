@@ -4,6 +4,9 @@ on:
     branches: [ main ]
 jobs:
   build:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
 
     steps:
@@ -25,20 +28,13 @@ jobs:
 
     - run: npm run build
 
-    - name: Init new repo in dist folder and commit generated files
-      run: |
-        cd ./build
-        git init
-        git add -A
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
-        git commit -m 'deploy'
-        git branch -m main
-
-    - name: Force push to destination branch
-      uses: ad-m/github-push-action@v0.6.0
+    - name: Setup Pages
+      uses: actions/configure-pages@v3
+    - name: Upload artifact
+      uses: actions/upload-pages-artifact@v2
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        branch: gh_pages
-        force: true
-        directory: ./build
+        # Upload entire repository
+        path: './build'
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v2
