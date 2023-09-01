@@ -7,9 +7,6 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    permissions:
-      id-token: write
-      pages: write
     runs-on: ubuntu-latest
 
     steps:
@@ -30,7 +27,6 @@ jobs:
         cd -
 
     - run: npm run build
-
     - name: Setup Pages
       uses: actions/configure-pages@v3
     - name: Upload artifact
@@ -38,6 +34,16 @@ jobs:
       with:
         # Upload entire repository
         path: './build'
-    - name: Deploy to GitHub Pages
-      id: deployment
-      uses: actions/deploy-pages@v2
+  deploy:
+    needs: build
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    permissions:
+      id-token: write
+      pages: write
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
