@@ -78,7 +78,7 @@ const App = () => {
 
   return (
     <>
-      <Container className="col-12 col-lg-9 col-xl-7">
+      <Container className="col-12 col-lg-12 col-xl-9">
         <div className="app-header d-flex flex-wrap flex-column flex-sm-row align-items-stretch align-items-sm-center has-column-gap-3">
           <h1 className="fw-bold">
             Notenstreicher
@@ -94,7 +94,7 @@ const App = () => {
               Reset Form
             </Button>
           </div>
-          <div className="d-flex ms-auto flex-column flex-sm-row align-items-stretch btn-group">
+          <div className="d-flex flex-column flex-md-row align-items-stretch ms-md-auto btn-group pt-3 pt-md-0">
             <Button variant="primary active" onClick={addCategory}>
               BSc (2022)
             </Button>
