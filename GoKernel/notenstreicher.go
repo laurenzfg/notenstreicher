@@ -68,8 +68,8 @@ func (tr *Transcript) avgWithIgnoreList(ignoreList []int) float64 {
 		return 6.0
 	}
 
-	if ectsSum + cancelledECTSSum > 152.00 {
-		// more than 152 ECTS transcript ==> return 6.0 as fallback value
+	if ectsSum + cancelledECTSSum > 146.00 {
+		// more than 146 ECTS transcript ==> return 6.0 as fallback value
 		return 6.0
 	}
 
@@ -143,7 +143,7 @@ func solveAndOutput(transcript *Transcript) string {
 	output += fmt.Sprintf("\nThis cancellation yields an average of: %f\n", optimalAvg)
 
 	if (naiveAvg == 6.0 || optimalAvg == 6.0) {
-		output += fmt.Sprintf("\nYour transcript is of invalid shape.\nA transcript contains a non-zero count of grade areas whose grades are within 1.0 and 4.0 and\nwhose grades' ECTS add up to at most 152 (DO NOT enter Final Thesis, Non-Technical Module, PSP, Mentoring as these cannot be cancelled / are ungraded).\n")
+		output += fmt.Sprintf("\nYour transcript is of invalid shape.\nA transcript contains a non-zero count of grade areas whose grades are within 1.0 and 4.0 and\nwhose grades' ECTS add up to at most 146 (DO NOT enter Final Thesis, Non-Technical Module, PSP, Mentoring as these cannot be cancelled / are ungraded).\n")
 	} else {
 		output += fmt.Sprintf("\nlaurenzfg congratulates you to your successful CS degree.\nlaurenzfg does not take any responsibility for the grade cancellation recommendation.\nSolve the problem yourself, you literally have a CS degree now!\nArrivederci!\n")
 	}
