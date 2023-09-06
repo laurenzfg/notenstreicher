@@ -22,7 +22,7 @@ const Grade = ({ grade, updateGrade, removeGrade }) => {
 
   const handleGradeGradeUpdate = (event) => {
     let updatedGrade = { ...grade };
-    updatedGrade.grade = event.target.value;
+    updatedGrade.grade = event.target.value.replace(/,/g, '.');
     updateGrade(updatedGrade);
   };
 
