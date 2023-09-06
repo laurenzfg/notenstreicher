@@ -1,8 +1,9 @@
 {
   "short_name": "Notenstreicher",
-  "name": "Notenstreicher",
-  "start_url": ".",
-  "display": "standalone",
+  "name": "RWTH Notenstreicher",
+  "start_url": "/",
+  "scope": "/",
+  "display": "browser",
   "theme_color": "#000000",
   "background_color": "#ffffff"
 }
