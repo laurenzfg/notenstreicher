@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
@@ -7,13 +7,6 @@ import Modal from "react-bootstrap/Modal";
 import MEGGDisplay from "./MEGG";
 
 import "./App.css";
-
-
-// POs are indixed as follow:
-// 0: BSc 2022
-// 1: BSc 2018
-// 2: MSc 2023
-// 3: MSc 2010
 
 const App = () => {
   const initialTranscript = {
@@ -32,6 +25,22 @@ const App = () => {
   };
 
   const [po, setPO] = useState("BSc 2022");
+  const [storageConsent, setStorageConsent] = useState(false);
+
+    // Try to load from storage ONCE at startup
+    useEffect(() => {
+      var savedTranscript = localStorage.getItem("ts");
+      if (savedTranscript && savedTranscript !== "noconsent") {
+        console.log("ts loaded from storage")
+        savedTranscript = JSON.parse(savedTranscript);
+        setStorageConsent(true);
+        updateTranscript(savedTranscript);
+      } else if (savedTranscript === null) {
+        // assume consent (saving feature is opt out)
+        setStorageConsent(true);
+      }
+    }, []);
+
   const [transcript, updateTranscript] = useState(initialTranscript[po]);
 
   // for the result modal
@@ -87,7 +96,9 @@ const App = () => {
 
   const onCalculate = () => {
     const transcriptAsJSON = JSON.stringify(transcript);
-
+    if (storageConsent) {
+      localStorage.setItem("ts", transcriptAsJSON);
+    }
     let cancellationRecommendation = "pending result";
     try {
       // Call Golang
@@ -98,6 +109,18 @@ const App = () => {
 
     setCancellationRecommendation(cancellationRecommendation);
     setShow(true);
+  };
+
+  const handleWithdrawConsent = (event) => {
+    setStorageConsent(false);
+    localStorage.setItem("ts", "noconsent");
+  };
+
+  
+  const handleGiveConsent = (event) => {
+    setStorageConsent(true);
+    const transcriptAsJSON = JSON.stringify(transcript);
+    localStorage.setItem("ts", transcriptAsJSON);
   };
 
   return (
@@ -149,7 +172,14 @@ const App = () => {
           <p>
             (c) 2021 <a href="https://laurenzfg.com">laurenzfg</a>. Source code
             is published at{" "}
-            <a href="https://github.com/laurenzfg/notenstreicher">GitHub</a>.<br />
+            <a href="https://github.com/laurenzfg/notenstreicher">GitHub</a>.</p>
+            {storageConsent && 
+            <p>We save your transcript to your local device for future uses of Notenstreicher whenever you press "Calculate". Don't want this? <Button variant="secondary" onClick={handleWithdrawConsent}>Purge + Withdraw consent.</Button></p>
+            }
+            {!storageConsent && 
+              <p>Per your request, your transcript will NOT be saved to your local device for future uses of Notenstreicher. Want this? <Button variant="secondary" onClick={handleGiveConsent}>Give consent.</Button></p>
+            }
+            <p>
             Data Protection Statement: The data processing happens on your machine.
             So the data created while using the app (e.g. your grades) is not sent to any party, including me.
             Your access to the service might be logged and might be processed in adherence to EU and US law by my hosting provider GitHub Pages, though.
@@ -170,6 +200,12 @@ const App = () => {
             to compute the optimal grade cancellation:
           </p>
           <pre>{cancellationRecommendation}</pre>
+          {storageConsent && 
+            <p>Your transcript was saved to your local device for future uses of Notenstreicher. Don't want this? Purge + Withdraw consent in the page footer.</p>
+          }
+          {!storageConsent && 
+            <p>Per your request, your transcript was NOT saved to your local device for future uses of Notenstreicher. Want this? Give consent in the page footer.</p>
+          }
           <p>
             You just invoked a CLI tool written in Golang with your browser. It
             was run as a <a href="https://webassembly.org/">WebAssembly</a> on your machine! Pretty cool, eh.
