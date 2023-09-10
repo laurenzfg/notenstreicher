@@ -171,7 +171,7 @@ const App = () => {
 
         <div className="app-footer">
           <p>
-            (c) 2021 <a href="https://laurenzfg.com">laurenzfg</a>. Source code
+            (c) 2021 - 2023 <a href="https://laurenzfg.com">laurenzfg</a>. Source code
             is published at{" "}
             <a href="https://github.com/laurenzfg/notenstreicher">GitHub</a>.</p>
             {storageConsent && 
