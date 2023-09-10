@@ -131,7 +131,9 @@ const App = () => {
           </h1>
           <div className="d-flex gap-2 flex-column flex-sm-row align-items-stretch">
             <Button variant="primary" onClick={onCalculate}>
-              Calculate
+              Calculate {storageConsent && 
+                <span>& Save</span>
+              }
             </Button>
             <Button variant="success" onClick={addCategory}>
               Add Grade Area
