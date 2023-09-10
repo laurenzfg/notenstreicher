@@ -27,20 +27,6 @@ const App = () => {
   const [po, setPO] = useState("BSc 2022");
   const [storageConsent, setStorageConsent] = useState(false);
 
-    // Try to load from storage ONCE at startup
-    useEffect(() => {
-      var savedTranscript = localStorage.getItem("ts");
-      if (savedTranscript && savedTranscript !== "noconsent") {
-        console.log("ts loaded from storage")
-        savedTranscript = JSON.parse(savedTranscript);
-        setStorageConsent(true);
-        updateTranscript(savedTranscript);
-      } else if (savedTranscript === null) {
-        // assume consent (saving feature is opt out)
-        setStorageConsent(true);
-      }
-    }, []);
-
   const [transcript, updateTranscript] = useState(initialTranscript[po]);
 
   // for the result modal
@@ -122,6 +108,20 @@ const App = () => {
     const transcriptAsJSON = JSON.stringify(transcript);
     localStorage.setItem("ts", transcriptAsJSON);
   };
+
+  // Try to load from storage ONCE at startup
+  useEffect(() => {
+    var savedTranscript = localStorage.getItem("ts");
+    if (savedTranscript && savedTranscript !== "noconsent") {
+      console.log("ts loaded from storage")
+      savedTranscript = JSON.parse(savedTranscript);
+      setStorageConsent(true);
+      updateTranscript(savedTranscript);
+    } else if (savedTranscript === null) {
+      // assume consent (saving feature is opt out)
+      setStorageConsent(true);
+    }
+  }, []);
 
   return (
     <>
