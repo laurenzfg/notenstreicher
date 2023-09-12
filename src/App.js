@@ -46,6 +46,7 @@ const App = () => {
     };
 
     let transcriptWithAddedCategory = {
+      ...transcript,
       meggs: [emptyCategory, ...transcript.meggs],
     };
 
@@ -60,7 +61,7 @@ const App = () => {
 
   const updateGradeArea = (i) => {
     return (updatedCategory) => {
-      let transcriptWithUpdatedCategory = { meggs: [...transcript.meggs] };
+      let transcriptWithUpdatedCategory = { ...transcript, meggs: [...transcript.meggs] };
       transcriptWithUpdatedCategory.meggs[i] = updatedCategory;
       updateTranscript(transcriptWithUpdatedCategory);
     };
@@ -68,7 +69,7 @@ const App = () => {
 
   const removeGradeArea = (i) => {
     return () => {
-      let transcriptWithUpdatedCategory = { meggs: [...transcript.meggs] };
+      let transcriptWithUpdatedCategory = { ...transcript, meggs: [...transcript.meggs] };
       let firstItems = transcriptWithUpdatedCategory.meggs.slice(0, i);
       let lastItems = transcriptWithUpdatedCategory.meggs.slice(
         i + 1,
