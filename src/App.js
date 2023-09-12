@@ -145,7 +145,7 @@ const App = () => {
           <div className="d-flex flex-column flex-md-row align-items-stretch ms-md-auto btn-group pt-3 pt-md-0">
             {
               Object.keys(initialTranscript).map(thisPo => (
-                <Button key={thisPo} value={thisPo} variant={thisPo === transcript.po.toString() ? 'primary active' : 'primary'} onClick={handlePoButtonClick}>
+                <Button key={thisPo} value={thisPo} variant={thisPo === transcript.toString() ? 'primary active' : 'primary'} onClick={handlePoButtonClick}>
                   {thisPo}
                 </Button>
               ))
